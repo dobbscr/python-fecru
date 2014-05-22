@@ -1,0 +1,8 @@
+README.rst
+fecru.py
+setup.py
+Fecru.egg-info/PKG-INFO
+Fecru.egg-info/SOURCES.txt
+Fecru.egg-info/dependency_links.txt
+Fecru.egg-info/requires.txt
+Fecru.egg-info/top_level.txt

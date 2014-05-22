@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/repos/general/!svn/ver/14435/devtools/automation/atlassian_api/atlasrapi/python-crowd/examples
+END
+simple_auth_test.py
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/repos/general/!svn/ver/14435/devtools/automation/atlassian_api/atlasrapi/python-crowd/examples/simple_auth_test.py
+END
+simple_token_auth.py
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/repos/general/!svn/ver/14435/devtools/automation/atlassian_api/atlasrapi/python-crowd/examples/simple_token_auth.py
+END
