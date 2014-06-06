@@ -30,7 +30,7 @@ class FecruServer(object):
         self.session = requests.Session()
 
         self.session.auth = requests.auth.HTTPBasicAuth(app_name, app_pass)
-        print str(self.session.auth)
+#        print str(self.session.auth)
         self.session.headers.update({
             "Content-type": "application/json",
             "Accept": "application/json"
@@ -88,10 +88,10 @@ class FecruServer(object):
         return req
 
     def auth_ping(self):
-        """Test that application can authenticate to Crowd.
+        """Test that application can authenticate to Fecru.
 
         Attempts to authenticate the application user against
-        the Crowd server. In order for user authentication to
+        the Fecru server. In order for user authentication to
         work, an application must be able to authenticate.
 
         Returns:
@@ -123,7 +123,7 @@ class FecruServer(object):
 
             None: If failure.
         """
-        print "url:%s"%self.fecru_url + "/rest-service-fecru/server-v1"
+#        print "url:%s"%self.fecru_url + "/rest-service-fecru/server-v1"
 #        response = self._get(self.fecru_url + "/rest-service-fecru/server-v1?FEAUTH=" +  self.session.auth)
         response = self._get(self.fecru_url + "/rest-service-fecru/server-v1")
 #        print dir(response)
@@ -135,3 +135,68 @@ class FecruServer(object):
 
         return response.content
 
+    def create_repository(self, repo_name, descr, scmurl, scmpath, enabled="false"):
+        """Add a new repository
+
+        Args:
+            group: Repository name
+
+        Returns:
+ 
+            None: If failed.
+        """
+        rtnStr="Success"
+        
+        params = {
+            "type" : "SUBVERSION",
+            "name" : repo_name,
+            "description" : descr,
+#            "enabled" : enabled,
+            "url" : scmurl,
+            "path" : scmpath,
+            "username" : "continuum",
+            "password" : "ECOoSTFTjxm67w2Uw6nSmOMxvwuj3jh81fE4FwbvLucw91SmvG8UG6j6mNh5Or5"
+#            "svn" : {
+#                "url" : scmurl,
+#                "path" : scmpath,
+#                "auth" : {
+#                    "username" : "continuum",
+#                    "password" : "ECOoSTFTjxm67w2Uw6nSmOMxvwuj3jh81fE4FwbvLucw91SmvG8UG6j6mNh5Or5"
+#                    }
+            
+        }
+
+        response = self._post(self.fecru_url + "/rest-service-fecru/admin/repositories-v1",
+                             data=json.dumps(params))
+        if not response.ok:
+            rtnStr="Error : "+str(response.status_code)
+        else:
+            rtnStr=rtnStr+" : "+str(response.status_code)
+    
+        return(rtnStr)
+
+    def check_repository_exists(self, name):
+        """List all repositories
+
+        Args:
+            limit: page limit
+
+        Returns:
+ 
+            None: If failed.
+        """
+        params = {
+            "name" : name
+            }
+
+        print params
+        response = self._get(self.fecru_url + "/rest-service-fecru/admin/repositories-v1",data=json.dumps(params))
+
+        print dir(response)
+        print response.status_code
+        print response.text
+        if not response.ok:
+            return False
+
+        return(response.text)
+    
