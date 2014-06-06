@@ -14,7 +14,7 @@ setup(
 
     author='Christopher Richard Dobbs',
     author_email='christopher.dobbs@evry.com',
-    url='https://github.com/dobbscr/python-crowd',
+    url='https://github.com/dobbscr/python-fecru',
 
     classifiers=[
         "Development Status :: 4 - Beta",
