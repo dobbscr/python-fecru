@@ -6,7 +6,7 @@ setup(
     name='Fecru',
     license='BSD',
     py_modules=['fecru'],
-    version='0.7',
+    version='0.7evry',
     install_requires=['requests'],
 
     description='A python client to the Atlassian FECRU REST API',
