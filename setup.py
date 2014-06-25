@@ -3,7 +3,7 @@ import os.path
 __dir__ = os.path.dirname(os.path.abspath(__file__))
 
 setup(
-    name='Fecru',
+    name='FecruEvry',
     license='BSD',
     py_modules=['fecru'],
     version='0.7a1.dev0',
